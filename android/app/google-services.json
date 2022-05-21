@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "485169507816",
+    "project_id": "medway-f1e93",
+    "storage_bucket": "medway-f1e93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485169507816:android:9dbf17e29ad350d093885d",
+        "android_client_info": {
+          "package_name": "com.example.medway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485169507816-1auk20sratuf1jr7qotftpen922elo2b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.medway",
+            "certificate_hash": "50a0875d8da1122a99ad17066d8b41d3f688ef07"
+          }
+        },
+        {
+          "client_id": "485169507816-sc49tp3g346f9gohpb6j923q3klcal24.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd50HewfvhD6Y1EBpKYnByI10_fqPslBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485169507816-sc49tp3g346f9gohpb6j923q3klcal24.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
