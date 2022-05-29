@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medway/ui/bottom_nav_pages/home.dart';
 import 'package:medway/ui/login_screen.dart';
 import 'package:medway/ui/splash_screen.dart';
 import 'package:medway/ui/user_form.dart';

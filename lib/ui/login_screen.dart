@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: TextField(
                                 controller: _emailController,
                                 decoration: InputDecoration(
-                                  hintText: "thed9954@gmail.com",
+                                  hintText: "abcd@gmail.com",
                                   hintStyle: TextStyle(
                                     fontSize: 14.sp,
                                     color: AppColors.text_color,
