@@ -21,19 +21,12 @@ class _BottomNavControllerState extends State<BottomNavController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.orange_accent,
-        elevation: 0,
-        title: Text("Med-Way", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-      ),
       bottomNavigationBar: BottomNavigationBar(
-        elevation: 0,
+        elevation: 5,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.white70,
+        selectedItemColor: Colors.white,
         backgroundColor: AppColors.orange_accent,
-        unselectedItemColor: Colors.white24,
+        unselectedItemColor: AppColors.nav_unselelcted,
         currentIndex: _currentIndex,
         selectedLabelStyle:
         TextStyle(color: Colors.black, fontWeight: FontWeight.bold),

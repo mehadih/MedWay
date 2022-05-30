@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medway/const/app_colors.dart';
 
 class Cart extends StatefulWidget {
   const Cart({Key? key}) : super(key: key);
@@ -11,7 +12,13 @@ class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      appBar: AppBar(
+        backgroundColor: AppColors.orange_accent,
+        elevation: 0,
+        title: Text("Cart", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+      ),
     );
   }
 }
