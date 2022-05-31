@@ -14,12 +14,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  var _firestoreInstance = FirebaseFirestore.instance;
   List<String> _sliderImages = [];
   var _dotPosition = 0;
-  var _firestoreInstance = FirebaseFirestore.instance;
+  List _products = [];
 
   TextEditingController _searchController = TextEditingController();
 
+
+//carousel image function
   carouselImages() async {
     QuerySnapshot qn =
         await _firestoreInstance.collection("carousel-slider").get();
@@ -35,9 +38,32 @@ class _HomeState extends State<Home> {
     return qn.docs;
   }
 
+  //Products
+  products() async {
+    QuerySnapshot az =
+    await _firestoreInstance.collection("products").get();
+    setState(() {
+      for (int i = 0; i < az.docs.length; i++) {
+        _products.add(
+          {
+            "product-name": az.docs[i]["product-name"],
+            "product-description": az.docs[i]["product-description"],
+            "product-price": az.docs[i]["product-price"],
+            "product-image": az.docs[i]["product-img"],
+          }
+
+        );
+
+      }
+    });
+
+    return az.docs;
+  }
+
   @override
   void initState() {
     carouselImages();
+    products();
     super.initState();
   }
 
@@ -109,6 +135,7 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 15.h,
               ),
+              //Slider
               AspectRatio(
                 aspectRatio: 3,
                 child: CarouselSlider(
@@ -140,6 +167,7 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 10.h,
               ),
+              //Dots Indicator
               DotsIndicator(
                 dotsCount:
                     _sliderImages.length == 0 ? 1 : _sliderImages.length,
@@ -152,6 +180,62 @@ class _HomeState extends State<Home> {
                   size: Size(6, 6),
                 ),
               ),
+              SizedBox(
+                height: 15.h,
+              ),
+              Column(children: [Text("Top Search", style: TextStyle(color: AppColors.orange_accent, fontWeight: FontWeight.bold,fontSize: 24.sp),)],),
+              SizedBox(
+                height: 15.h,
+              ),
+              Expanded(child: GridView.builder(
+                scrollDirection: Axis.horizontal,
+                  itemCount: _products.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+                  itemBuilder: (_,index){
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 5, right: 5, bottom: 3),
+                      child: Card(
+                        elevation: 3,
+                        child:
+                        Column(
+                          children: [
+                            Expanded(
+                                child: Image.network(_products[index]["product-image"][0], fit: BoxFit.cover,)
+                            ),
+                            Text("${_products[index]["product-name"]}",style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold,color: AppColors.text_color),),
+                            Text("৳ ${_products[index]["product-price"].toString()}", style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold,color: AppColors.orange_accent),),
+                          ],
+                        ),
+                      ),
+                    );
+                  }
+                  ),),
+              SizedBox(
+                height: 15.h,
+              ),
+              Expanded(child: GridView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _products.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+                  itemBuilder: (_,index){
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 5, right: 5, bottom: 3),
+                      child: Card(
+                        elevation: 3,
+                        child:
+                        Column(
+                          children: [
+                            Expanded(
+                                child: Image.network(_products[index]["product-image"][0], fit: BoxFit.cover,)
+                            ),
+                            Text("${_products[index]["product-name"]}",style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold,color: AppColors.text_color),),
+                            Text("৳ ${_products[index]["product-price"].toString()}", style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold,color: AppColors.orange_accent),),
+                          ],
+                        ),
+                      ),
+                    );
+                  }
+              ),),
             ],
           ),
         ),
