@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:medway/const/app_colors.dart';
+import 'package:medway/ui/bottom_nav_pages/Medicines.dart';
 import 'package:medway/ui/bottom_nav_pages/cart.dart';
 import 'package:medway/ui/bottom_nav_pages/favourite.dart';
 import 'package:medway/ui/bottom_nav_pages/home.dart';
@@ -15,7 +16,7 @@ class BottomNavController extends StatefulWidget {
 
 class _BottomNavControllerState extends State<BottomNavController> {
 
-  final _pages = [Home(), Favourite(), Cart(), Profile()];
+  final _pages = [Home(), Medicines(), Favourite(), Cart(), Profile()];
   var _currentIndex = 0;
 
   @override
@@ -33,6 +34,9 @@ class _BottomNavControllerState extends State<BottomNavController> {
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.home), label:"Home", backgroundColor: Colors.grey
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.local_pharmacy), label:"Medicines", backgroundColor: Colors.grey
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label:"Favourite", backgroundColor: Colors.grey
