@@ -33,19 +33,19 @@ class _BottomNavControllerState extends State<BottomNavController> {
         TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home), label:"Home", backgroundColor: Colors.grey
+              icon: Icon(Icons.home), label:"Home",
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.local_pharmacy), label:"Medicines", backgroundColor: Colors.grey
+              icon: Icon(Icons.local_pharmacy), label:"Medicines",
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite), label:"Favourite", backgroundColor: Colors.grey
+              icon: Icon(Icons.favorite), label:"Favourite",
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart), label:"Cart", backgroundColor: Colors.grey
+              icon: Icon(Icons.shopping_cart), label:"Cart",
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person), label:"Profile", backgroundColor: Colors.grey
+              icon: Icon(Icons.person), label:"Profile",
           ),
         ],
         onTap: (index){

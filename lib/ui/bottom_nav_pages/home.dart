@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medway/const/app_colors.dart';
+import 'package:medway/ui/search_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -18,8 +19,7 @@ class _HomeState extends State<Home> {
   List<String> _sliderImages = [];
   var _dotPosition = 0;
   List _products = [];
-
-  TextEditingController _searchController = TextEditingController();
+  
 
 
 //carousel image function
@@ -91,47 +91,25 @@ class _HomeState extends State<Home> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 15),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: SizedBox(
-                          height: 60.h,
-                          child: TextFormField(
-                            controller: _searchController,
-                            decoration: InputDecoration(
-                                fillColor: Colors.white,
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius:
-                                    BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10),),
-                                    borderSide: BorderSide(
-                                      color: AppColors.main_color,
-                                    )),
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10),),
-                                    borderSide: BorderSide(
-                                      color: AppColors.orange_accent,
-                                    )),
-                                hintText: "Search medicines here...",
-                                hintStyle: TextStyle(fontSize: 13.sp)),
-                          ),
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    readOnly: true,
+                    decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                            BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10),),
+                            borderSide: BorderSide(
+                              color: AppColors.main_color,
+                            )),
+                        enabledBorder:
+                        OutlineInputBorder(
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10), topRight:Radius.circular(10),bottomRight: Radius.circular(10) ),
+                            borderSide: BorderSide(color: AppColors.orange_accent,)
                         ),
-                      ),
-                      GestureDetector(
-                        child: Container(
-                          color: AppColors.orange_accent,
-                          height: 60.h,
-                          width: 90.h,
-                          child: Center(
-                            child: Icon(
-                              Icons.search,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        onTap: () {},
-                      ),
-                    ],
+                        hintText: "Search medicines here...",
+                        hintStyle: TextStyle(fontSize: 13.sp)),
+                    onTap: ()=> Navigator.push(context, CupertinoPageRoute(builder: (_)=>SearchScreen())),
                   ),
                 ),
                 SizedBox(
@@ -185,6 +163,7 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   height: 40.h,
                 ),
+                //Most Searched Products
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -236,6 +215,7 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   height: 25.h,
                 ),
+                //products
                 Container(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
