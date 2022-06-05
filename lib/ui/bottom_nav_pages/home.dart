@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medway/const/app_colors.dart';
+import 'package:medway/ui/product_details_screen.dart';
 import 'package:medway/ui/search_screen.dart';
 
 class Home extends StatefulWidget {
@@ -187,26 +188,29 @@ class _HomeState extends State<Home> {
                     itemBuilder: (_,index){
                       return Padding(
                         padding: const EdgeInsets.only(left: 5, right: 5, bottom: 3),
-                        child: Card(
-                          shape: UnderlineInputBorder(
-                              borderSide:
-                              BorderSide(color: Colors.deepOrange, width: 2.0 )),
-                          elevation: 7,
-                          child:
-                          Column(
-                            children: [
-                              SizedBox(height: 5.h,),
-                              Expanded(
-                                  child: AspectRatio(
-                                    aspectRatio: 1.75,
-                                      child: Image.network(_products[index]["product-image"][0], fit: BoxFit.fill,))
-                              ),
-                              SizedBox(height: 15.h,),
-                              Text("${_products[index]["product-name"]}",style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold,color: AppColors.text_color),),
-                              SizedBox(height: 10.h,),
-                              Text("৳ ${_products[index]["product-price"].toString()}", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold,color: AppColors.orange_accent),),
-                              SizedBox(height: 5.h,),
-                            ],
+                        child: GestureDetector(
+                          onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (_)=> ProductDetails(_products[index]))),
+                          child: Card(
+                            shape: UnderlineInputBorder(
+                                borderSide:
+                                BorderSide(color: Colors.deepOrange, width: 2.0 )),
+                            elevation: 7,
+                            child:
+                            Column(
+                              children: [
+                                SizedBox(height: 5.h,),
+                                Expanded(
+                                    child: AspectRatio(
+                                      aspectRatio: 1.75,
+                                        child: Image.network(_products[index]["product-image"][0], fit: BoxFit.fill,))
+                                ),
+                                SizedBox(height: 15.h,),
+                                Text("${_products[index]["product-name"]}",style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold,color: AppColors.text_color),),
+                                SizedBox(height: 10.h,),
+                                Text("৳ ${_products[index]["product-price"].toString()}", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold,color: AppColors.orange_accent),),
+                                SizedBox(height: 5.h,),
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -226,26 +230,29 @@ class _HomeState extends State<Home> {
                         itemCount: _products.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 16, mainAxisSpacing: 16),
                         itemBuilder: (_,index){
-                          return Card(
-                            shape: UnderlineInputBorder(
-                                borderSide:
-                                BorderSide(color: Colors.deepOrange, width: 2.0 )),
-                            elevation: 7,
-                            child:
-                            Column(
-                              children: [
-                                SizedBox(height: 5.h,),
-                                Expanded(
-                                    child: AspectRatio(
-                                        aspectRatio: 1.75,
-                                        child: Image.network(_products[index]["product-image"][0], fit: BoxFit.fill,))
-                                ),
-                                SizedBox(height: 15.h,),
-                                Text("${_products[index]["product-name"]}",style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold,color: AppColors.text_color),),
-                                SizedBox(height: 10.h,),
-                                Text("৳ ${_products[index]["product-price"].toString()}", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold,color: AppColors.orange_accent),),
-                                SizedBox(height: 5.h,),
-                              ],
+                          return GestureDetector(
+                            onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (_)=> ProductDetails(_products[index]))),
+                            child: Card(
+                              shape: UnderlineInputBorder(
+                                  borderSide:
+                                  BorderSide(color: Colors.deepOrange, width: 2.0 )),
+                              elevation: 7,
+                              child:
+                              Column(
+                                children: [
+                                  SizedBox(height: 5.h,),
+                                  Expanded(
+                                      child: AspectRatio(
+                                          aspectRatio: 1.75,
+                                          child: Image.network(_products[index]["product-image"][0], fit: BoxFit.fill,))
+                                  ),
+                                  SizedBox(height: 15.h,),
+                                  Text("${_products[index]["product-name"]}",style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold,color: AppColors.text_color),),
+                                  SizedBox(height: 10.h,),
+                                  Text("৳ ${_products[index]["product-price"].toString()}", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold,color: AppColors.orange_accent),),
+                                  SizedBox(height: 5.h,),
+                                ],
+                              ),
                             ),
                           );
                         }
