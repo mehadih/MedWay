@@ -20,6 +20,7 @@ class _HomeState extends State<Home> {
   List<String> _sliderImages = [];
   var _dotPosition = 0;
   List _products = [];
+  List _categories = [];
   
 
 
@@ -58,11 +59,30 @@ class _HomeState extends State<Home> {
 
     return az.docs;
   }
+  
+  //Categories function
+  
+  categories() async{
+    QuerySnapshot cat = await _firestoreInstance.collection("categories").get();
+    setState(() {
+      for(int i = 0; i < cat.docs.length; i++ ){
+        _categories.add(
+          {
+            "category-name": cat.docs[i]["cat-name"],
+            "category-image": cat.docs[i]["cat-img"],
+          }
+        );
+      }
+    });
+
+    return cat.docs;
+  }
 
 
   @override
   void initState() {
     carouselImages();
+    categories();
     products();
     super.initState();
   }
@@ -164,54 +184,56 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   height: 40.h,
                 ),
-                //Most Searched Products
+                //Categories
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text("Most Searched Medicines", style: TextStyle(
+                    Text("Categories", style: TextStyle(
                         color: Colors.deepOrange,
-                        fontSize: 30,
+                        fontSize: 24,
                         fontWeight: FontWeight.normal,
                         shadows:[Shadow(color:Colors.black54, offset:Offset(1,2), blurRadius: 4 ) ]
                     )),
                   ],
                 ),
                 SizedBox(
-                  height: 25.h,
+                  height: 10.h,
                 ),
+
                 Container(
-                  height: 175,
+                  height: 130,
                   child: GridView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: _products.length,
+                    itemCount: _categories.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
                     itemBuilder: (_,index){
                       return Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 5, bottom: 3),
+                        padding: const EdgeInsets.only(left: 3, right: 3, bottom: 3),
                         child: GestureDetector(
-                          onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (_)=> ProductDetails(_products[index]))),
                           child: Card(
-                            shape: UnderlineInputBorder(
-                                borderSide:
-                                BorderSide(color: Colors.deepOrange, width: 2.0 )),
-                            elevation: 7,
-                            child:
-                            Column(
-                              children: [
-                                SizedBox(height: 5.h,),
-                                Expanded(
-                                    child: AspectRatio(
-                                      aspectRatio: 1.75,
-                                        child: Image.network(_products[index]["product-image"][0], fit: BoxFit.fill,))
-                                ),
-                                SizedBox(height: 15.h,),
-                                Text("${_products[index]["product-name"]}",style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold,color: AppColors.text_color),),
-                                SizedBox(height: 10.h,),
-                                Text("৳ ${_products[index]["product-price"].toString()}", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold,color: AppColors.orange_accent),),
-                                SizedBox(height: 5.h,),
-                              ],
+                            child: Container(
+                              height: 160,
+                              width: 160,
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 5.h,),
+                                  Expanded(
+                                      child: AspectRatio(
+                                          aspectRatio: 3,
+                                          child: Image.network(_categories[index]["category-image"], fit: BoxFit.contain,))
+                                  ),
+                                  SizedBox(height: 5.h,),
+                                  Text("${_categories[index]["category-name"]}",style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.bold,color: AppColors.orange_accent),),
+                                  SizedBox(height: 15.h,),
+                                ],
+                              ),
                             ),
-                          ),
+                            elevation: 10,
+                            shadowColor: AppColors.orange_accent,
+                            margin: EdgeInsets.all(15),
+                            shape: CircleBorder(side: BorderSide(width: 1, color: Colors.white),
+                            ),
+                          )
                         ),
                       );
                     }
@@ -219,6 +241,21 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   height: 25.h,
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text("Top Searched Products", style: TextStyle(
+                        color: Colors.deepOrange,
+                        fontSize: 24,
+                        fontWeight: FontWeight.normal,
+                        shadows:[Shadow(color:Colors.black54, offset:Offset(1,2), blurRadius: 4 ) ]
+                    )),
+                  ],
+                ),
+                SizedBox(
+                  height: 15.h,
+                ),
+
                 //products
                 Container(
                   child: Padding(
