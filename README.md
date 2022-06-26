@@ -1,6 +1,6 @@
 # medway
 
-Medicine on the way
+Medicine on the way, Learning & Developing a Medicine Delivery Application with Flutter.
 
 ## Getting Started
 
