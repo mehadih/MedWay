@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../const/app_colors.dart';
+import '../product_details_screen.dart';
 
 class Medicines extends StatefulWidget {
   const Medicines({Key? key}) : super(key: key);
@@ -76,26 +77,29 @@ class _MedicinesState extends State<Medicines> {
                         itemCount: _products.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 16, mainAxisSpacing: 16),
                         itemBuilder: (_,index){
-                          return Card(
-                            shape: UnderlineInputBorder(
-                                borderSide:
-                                BorderSide(color: Colors.deepOrange, width: 2.0 )),
-                            elevation: 7,
-                            child:
-                            Column(
-                              children: [
-                                SizedBox(height: 5.h,),
-                                Expanded(
-                                    child: AspectRatio(
-                                        aspectRatio: 1.75,
-                                        child: Image.network(_products[index]["product-image"][0], fit: BoxFit.fill,))
-                                ),
-                                SizedBox(height: 15.h,),
-                                Text("${_products[index]["product-name"]}",style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold,color: AppColors.text_color),),
-                                SizedBox(height: 10.h,),
-                                Text("৳ ${_products[index]["product-price"].toString()}", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold,color: AppColors.orange_accent),),
-                                SizedBox(height: 5.h,),
-                              ],
+                          return GestureDetector(
+                            onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (_)=> ProductDetails(_products[index]))),
+                            child: Card(
+                              shape: UnderlineInputBorder(
+                                  borderSide:
+                                  BorderSide(color: Colors.deepOrange, width: 2.0 )),
+                              elevation: 7,
+                              child:
+                              Column(
+                                children: [
+                                  SizedBox(height: 5.h,),
+                                  Expanded(
+                                      child: AspectRatio(
+                                          aspectRatio: 1.75,
+                                          child: Image.network(_products[index]["product-image"][0], fit: BoxFit.fill,))
+                                  ),
+                                  SizedBox(height: 15.h,),
+                                  Text("${_products[index]["product-name"]}",style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold,color: AppColors.text_color),),
+                                  SizedBox(height: 10.h,),
+                                  Text("৳ ${_products[index]["product-price"].toString()}", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold,color: AppColors.orange_accent),),
+                                  SizedBox(height: 5.h,),
+                                ],
+                              ),
                             ),
                           );
                         }

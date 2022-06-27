@@ -35,9 +35,9 @@ class _UserFormState extends State<UserForm> {
       firstDate: DateTime(DateTime.now().year - 30),
       lastDate: DateTime(DateTime.now().year),
     );
-    if (picked != null)
+    if (picked == true)
       setState(() {
-        _dobController.text = "${picked.day}/ ${picked.month}/ ${picked.year}";
+        _dobController.text = "${picked?.day}/ ${picked?.month}/ ${picked?.year}";
       });
   }
 

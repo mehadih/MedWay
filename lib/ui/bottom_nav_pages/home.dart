@@ -91,19 +91,19 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        backgroundColor: AppColors.orange_accent,
-        elevation: 0,
-        title: Text(
-          "Med-Way",
-          style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic),
-        ),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: AppColors.orange_accent,
+      //   elevation: 0,
+      //   title: Text(
+      //     "Med-Way",
+      //     style: TextStyle(
+      //         color: Colors.white,
+      //         fontWeight: FontWeight.bold,
+      //         fontStyle: FontStyle.italic),
+      //   ),
+      //   centerTitle: true,
+      //   automaticallyImplyLeading: false,
+      // ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: SafeArea(
