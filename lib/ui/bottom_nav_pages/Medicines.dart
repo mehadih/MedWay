@@ -60,7 +60,7 @@ class _MedicinesState extends State<Medicines> {
               fontStyle: FontStyle.italic),
         ),
         centerTitle: true,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
       body: SafeArea(
           child: SingleChildScrollView(
